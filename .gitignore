@@ -5,3 +5,7 @@
 ./.settings/
 ./lib/
 *.class
+/bin/
+/lib/
+/target/
+/.settings/

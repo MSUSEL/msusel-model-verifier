@@ -1,0 +1,12 @@
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/SimpleProjectGenerator.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/ProjectGenerator.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/config/GenerateDefaultConfig.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/MultiProjectGenerator.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/ModelVerifier.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/config/VerifierConfiguration.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/MetricsGenerator.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/config/VerifierConfigurationDeserializer.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/config/package-info.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/QMVerifyCLI.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/package-info.java
+/home/git/sonar plugins/sparqline-model-verifier/src/main/java/com/sparqline/quamoco/verifier/ProgressBar.java

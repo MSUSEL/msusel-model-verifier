@@ -1,8 +1,9 @@
 /**
  * The MIT License (MIT)
  *
- * SparQLine Quamoco Verifier
- * Copyright (c) 2015-2017 Isaac Griffith, SparQLine Analytics, LLC
+ * MSUSEL Quamoco Verifier
+ * Copyright (c) 2015-2017 Montana State University, Gianforte School of Computing,
+ * Software Engineering Laboratory
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.sparqline.quamoco.verifier;
+package edu.montana.gsoc.msusel.quamoco.verifier;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,10 +37,11 @@ import java.util.Queue;
 import org.apache.commons.math3.distribution.TriangularDistribution;
 
 import com.google.common.collect.Lists;
-import com.sparqline.codetree.CodeTree;
-import com.sparqline.codetree.node.FileNode;
-import com.sparqline.codetree.node.TypeNode;
-import com.sparqline.quamoco.verifier.config.VerifierConfiguration;
+
+import edu.montana.gsoc.msusel.CodeTree;
+import edu.montana.gsoc.msusel.node.FileNode;
+import edu.montana.gsoc.msusel.node.TypeNode;
+import edu.montana.gsoc.msusel.quamoco.verifier.config.VerifierConfiguration;
 
 /**
  * Base class for ProjectGenerators used to construct a codetree for simulation
@@ -82,7 +84,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/classnames1.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/classnames1.txt"))))
         {
 
             String line = "";
@@ -99,7 +101,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/classnames2.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/classnames2.txt"))))
         {
 
             String line = "";
@@ -116,7 +118,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/classnames3.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/classnames3.txt"))))
         {
 
             String line = "";
@@ -155,7 +157,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/regionnames1.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/regionnames1.txt"))))
         {
 
             String line = "";
@@ -172,7 +174,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/regionnames2.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/regionnames2.txt"))))
         {
 
             String line = "";
@@ -189,7 +191,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/regionnames3.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/regionnames3.txt"))))
         {
 
             String line = "";
@@ -245,7 +247,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/classnames1.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/classnames1.txt"))))
         {
 
             String line = "";
@@ -262,7 +264,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/classnames2.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/classnames2.txt"))))
         {
 
             String line = "";
@@ -279,7 +281,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/classnames3.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/classnames3.txt"))))
         {
 
             String line = "";
@@ -329,7 +331,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/fieldnames.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/fieldnames.txt"))))
         {
 
             String line = "";
@@ -376,7 +378,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/methodnames1.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/methodnames1.txt"))))
         {
 
             String line = "";
@@ -393,7 +395,7 @@ public abstract class ProjectGenerator {
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(
                         ProjectGenerator.class
-                                .getResourceAsStream("/com/sparqline/quamoco/verifier/generator/methodnames2.txt"))))
+                                .getResourceAsStream("/edu/montana/gsoc/msusel/quamoco/verifier/generator/methodnames2.txt"))))
         {
 
             String line = "";

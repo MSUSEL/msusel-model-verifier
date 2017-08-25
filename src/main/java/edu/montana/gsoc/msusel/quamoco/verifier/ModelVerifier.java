@@ -1,8 +1,9 @@
 /**
  * The MIT License (MIT)
  *
- * SparQLine Quamoco Verifier
- * Copyright (c) 2015-2017 Isaac Griffith, SparQLine Analytics, LLC
+ * MSUSEL Quamoco Verifier
+ * Copyright (c) 2015-2017 Montana State University, Gianforte School of Computing,
+ * Software Engineering Laboratory
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.sparqline.quamoco.verifier;
+package edu.montana.gsoc.msusel.quamoco.verifier;
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -43,12 +44,6 @@ import org.slf4j.LoggerFactory;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.sparqline.codetree.CodeTree;
-import com.sparqline.codetree.INode;
-import com.sparqline.codetree.node.FileNode;
-import com.sparqline.codetree.node.MethodNode;
-import com.sparqline.codetree.node.TypeNode;
-import com.sparqline.metrics.Register;
 import com.sparqline.quamoco.distiller.ModelDistiller;
 import com.sparqline.quamoco.graph.edge.Edge;
 import com.sparqline.quamoco.graph.node.FactorNode;
@@ -57,8 +52,14 @@ import com.sparqline.quamoco.graph.node.FindingNode;
 import com.sparqline.quamoco.graph.node.Node;
 import com.sparqline.quamoco.processor.Extent;
 import com.sparqline.quamoco.processor.MetricsContext;
-import com.sparqline.quamoco.verifier.config.VerifierConfiguration;
 
+import edu.montana.gsoc.msusel.CodeTree;
+import edu.montana.gsoc.msusel.INode;
+import edu.montana.gsoc.msusel.metrics.Register;
+import edu.montana.gsoc.msusel.node.FileNode;
+import edu.montana.gsoc.msusel.node.MethodNode;
+import edu.montana.gsoc.msusel.node.TypeNode;
+import edu.montana.gsoc.msusel.quamoco.verifier.config.VerifierConfiguration;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**

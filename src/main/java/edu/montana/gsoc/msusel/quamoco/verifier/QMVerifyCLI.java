@@ -1,8 +1,9 @@
 /**
  * The MIT License (MIT)
  *
- * SparQLine Quamoco Verifier
- * Copyright (c) 2015-2017 Isaac Griffith, SparQLine Analytics, LLC
+ * MSUSEL Quamoco Verifier
+ * Copyright (c) 2015-2017 Montana State University, Gianforte School of Computing,
+ * Software Engineering Laboratory
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.sparqline.quamoco.verifier;
+package edu.montana.gsoc.msusel.quamoco.verifier;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,7 +40,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import com.sparqline.quamoco.verifier.config.VerifierConfiguration;
+import edu.montana.gsoc.msusel.quamoco.verifier.config.VerifierConfiguration;
 
 /**
  * The Command Line Interface for the Quality Model Verifier
@@ -204,6 +205,6 @@ public class QMVerifyCLI {
         final HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp(
                 "qmverify", "\nValidate and verify a quamoco quality model.\n\n", QMVerifyCLI.options,
-                "\nSparQLine Analytics, LLC (C) 2015-2017", true);
+                "\nMontana State University, Gianforte School of Computing (C) 2015-2017", true);
     }
 }

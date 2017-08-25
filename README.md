@@ -1,33 +1,33 @@
-# SparQLine Analytics Quamoco Model Verifier
+# MSUSEL Quamoco Model Verifier
 
-Construct a new module: sparqline-model-verifier
+Construct a new module: msusel-model-verifier
  - Should construct an executable jar
  - Should contain a bin/ directory with both a qm-verify.sh and qm-verify.bat files
 
 ## Goals
  - To take as input a .qm quamoco model and verify it is correct
  - It does this using the following additional parameters
-    sparqline.verify.multi-project -> boolean :: false
-    sparqline.verify.max-subproject-depth -> int 1:5 :: 2
-    sparqline.verify.max-projects-per-level -> int 1:3 :: 2
-    sparqline.verify.max-files-per-project -> int 1:10 :: 5
-    sparqline.verify.max-types-per-file -> int 1:5 :: 1
-    sparqline.verify.max-methods-per-type -> int 1:10 :: 5
-    sparqline.verify.max-fields-per-type -> int 1:5 :: 2
-    sparqline.verify.max-number-findings-per-item -> int 1:5 :: 2
-    sparqline.verify.finding-probability -> double [0:1] :: 0.05
-    sparqline.verify.executions -> int > 1 :: 1000
+    msusel.verify.multi-project -> boolean :: false
+    msusel.verify.max-subproject-depth -> int 1:5 :: 2
+    msusel.verify.max-projects-per-level -> int 1:3 :: 2
+    msusel.verify.max-files-per-project -> int 1:10 :: 5
+    msusel.verify.max-types-per-file -> int 1:5 :: 1
+    msusel.verify.max-methods-per-type -> int 1:10 :: 5
+    msusel.verify.max-fields-per-type -> int 1:5 :: 2
+    msusel.verify.max-number-findings-per-item -> int 1:5 :: 2
+    msusel.verify.finding-probability -> double [0:1] :: 0.05
+    msusel.verify.executions -> int > 1 :: 1000
  - Using the above parameters the tool generates a random system and populates it with the base quamoco metrics
  - The configuration then needs to determine which factors are considered your top quality aspects
-    sparqline.verify.quality_aspects -> String[] (comma-separated list of quality aspect names)
+    msusel.verify.quality_aspects -> String[] (comma-separated list of quality aspect names)
  - The configuration then needs to define which specific findings to generate
-    sparqline.verify.findings -> String[] (comma-separated list of measurement names)
-    Note: if sparqline.verify.findings is empty, it will randomly select from the list of measurment methods.
- - The quamoco execution is ran in two configurations, once with no findings to verify the model and then sparqline.verify.execution number of times, randomly generating findings each time, to calculate the average effect (and standard deviation) on the selected quality aspects.
+    msusel.verify.findings -> String[] (comma-separated list of measurement names)
+    Note: if msusel.verify.findings is empty, it will randomly select from the list of measurment methods.
+ - The quamoco execution is ran in two configurations, once with no findings to verify the model and then msusel.verify.execution number of times, randomly generating findings each time, to calculate the average effect (and standard deviation) on the selected quality aspects.
 
 ## Statistics
  - The first execution will compare the value of each quality aspect (when no findings are applied to the model) to the expected value of 1.0 using a G test with a 97.5% confidence level
- - The second execution will compare the value of each quality aspect (actually an array of sparqline.verify.execution number of values) to 1.0 using a one-sided t-test
+ - The second execution will compare the value of each quality aspect (actually an array of msusel.verify.execution number of values) to 1.0 using a one-sided t-test
  - Interpretting the results works as follows, for each quality aspect, if the first test returns false the model is not well-formed. If the first test returns true and the second test false, then the model is not well formed and you will need to investigate what is going on.
 
 ## Results

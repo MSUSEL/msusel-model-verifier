@@ -4,6 +4,35 @@ Construct a new module: msusel-model-verifier
  - Should construct an executable jar
  - Should contain a bin/ directory with both a qm-verify.sh and qm-verify.bat files
 
+## Installing Maven
+
+This project uses the Maven wrapper so that you do not need to install maven manually.
+The first time you go to build this project, simply execute the following command:
+
+```
+./mvnw clean install -Dmaven.test.skip=true
+```
+or for windows:
+```
+.\mvnw.cmd clean package -Dmaven.test.skip=true
+```
+
+## Building
+
+This project can be built using the following command:
+
+```
+./mvnw clean package -Dmaven.test.skip=true
+```
+
+This project can be compile, tested, or packaged with the following commands:
+
+```
+./mvnw clean compile
+./mvnw clean test
+./mvnw clean package
+```
+
 ## Goals
  - To take as input a .qm quamoco model and verify it is correct
  - It does this using the following additional parameters
@@ -47,7 +76,7 @@ Command Line Arguments
  D[paramname] Specifies an overriding value for a given configuration value
 
 ## Output
-
+```
  Generating System: [==============================================] 100%
  Distilling Model: Complete
  
@@ -83,6 +112,7 @@ Command Line Arguments
   -----------------------------------------------------------------------
   Security            1.000          1.000         1.0              0
   -----------------------------------------------------------------------
+```
 
  Identified Issues:
   None

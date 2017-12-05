@@ -24,11 +24,10 @@
  * SOFTWARE.
  */
 /**
- * This package contains the classes used to contain the configuration
- * information of a Model Verifier as well as the classes used to deserialize
- * such configurations from JSON.
+ * This package contains the main components of the model verifier, including
+ * the CLI components and the generators used during the simulations.
  * 
  * @author Isaac Griffith
  * @version 1.1.1
  */
-package edu.montana.gsoc.msusel.quamoco.verifier.config;
+package edu.montana.gsoc.msusel.codetree.quamoco.verifier;

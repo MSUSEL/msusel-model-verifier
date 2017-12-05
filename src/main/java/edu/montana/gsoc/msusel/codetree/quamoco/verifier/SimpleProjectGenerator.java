@@ -23,19 +23,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package edu.montana.gsoc.msusel.quamoco.verifier;
+package edu.montana.gsoc.msusel.codetree.quamoco.verifier;
 
 import java.security.SecureRandom;
 import java.util.List;
 
+import edu.montana.gsoc.msusel.codetree.CodeTree;
+import edu.montana.gsoc.msusel.codetree.node.FieldNode;
+import edu.montana.gsoc.msusel.codetree.node.FileNode;
+import edu.montana.gsoc.msusel.codetree.node.MethodNode;
+import edu.montana.gsoc.msusel.codetree.node.TypeNode;
+import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
 import org.apache.commons.math3.distribution.TriangularDistribution;
-
-import edu.montana.gsoc.msusel.CodeTree;
-import edu.montana.gsoc.msusel.node.FieldNode;
-import edu.montana.gsoc.msusel.node.FileNode;
-import edu.montana.gsoc.msusel.node.MethodNode;
-import edu.montana.gsoc.msusel.node.TypeNode;
-import edu.montana.gsoc.msusel.quamoco.verifier.config.VerifierConfiguration;
 
 /**
  * Class used to generate the code tree for a simple single project project.
@@ -104,7 +103,7 @@ public class SimpleProjectGenerator extends ProjectGenerator {
                     if (start == end)
                         break;
 
-                    TypeNode clazz = TypeNode.builder(qIdentifier, identifier).range(start, end).create();
+                    TypeNode clazz = TypeNode.builder().identifier(qIdentifier).name(identifier).start(start).end(end).create();
 
                     TriangularDistribution nfDist = new TriangularDistribution(
                             1, config.maxFieldsPerType() / 2 + 1, config.maxFieldsPerType());
@@ -116,7 +115,7 @@ public class SimpleProjectGenerator extends ProjectGenerator {
                         String qId = createFieldIdentifier(clazz, name);
                         int line = lastLine + 1;
 
-                        FieldNode fn = FieldNode.builder(name, qId).range(line).create();
+                        FieldNode fn = FieldNode.builder().name(name).identifier(qId).start(line).end(line).create();
                         clazz.addField(fn);
 
                         lastLine = line;
@@ -141,7 +140,7 @@ public class SimpleProjectGenerator extends ProjectGenerator {
                         lastLine = e;
                         String qId = createMethodIdentifier(clazz, name);
 
-                        MethodNode mn = MethodNode.builder(name, qId).constructor(constructor).range(s, e).create();
+                        MethodNode mn = MethodNode.builder().name(name).identifier(qId).constructor(constructor).start(s).end(e).create();
                         clazz.addMethod(mn);
                     }
 

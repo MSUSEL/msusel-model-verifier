@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package edu.montana.gsoc.msusel.quamoco.verifier;
+package edu.montana.gsoc.msusel.codetree.quamoco.verifier;
 
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -35,6 +35,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.graph.MutableNetwork;
+import edu.montana.gsoc.msusel.codetree.CodeTree;
+import edu.montana.gsoc.msusel.codetree.INode;
+import edu.montana.gsoc.msusel.codetree.metrics.Register;
+import edu.montana.gsoc.msusel.codetree.node.FileNode;
+import edu.montana.gsoc.msusel.codetree.node.MethodNode;
+import edu.montana.gsoc.msusel.codetree.node.TypeNode;
+import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
 import org.apache.commons.math3.stat.StatUtils;
 import org.apache.commons.math3.stat.inference.TestUtils;
 import org.apache.commons.math3.util.FastMath;
@@ -45,12 +53,6 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import edu.montana.gsoc.msusel.CodeTree;
-import edu.montana.gsoc.msusel.INode;
-import edu.montana.gsoc.msusel.metrics.Register;
-import edu.montana.gsoc.msusel.node.FileNode;
-import edu.montana.gsoc.msusel.node.MethodNode;
-import edu.montana.gsoc.msusel.node.TypeNode;
 import edu.montana.gsoc.msusel.quamoco.distiller.ModelDistiller;
 import edu.montana.gsoc.msusel.quamoco.graph.edge.Edge;
 import edu.montana.gsoc.msusel.quamoco.graph.node.FactorNode;
@@ -59,7 +61,6 @@ import edu.montana.gsoc.msusel.quamoco.graph.node.FindingNode;
 import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
 import edu.montana.gsoc.msusel.quamoco.processor.Extent;
 import edu.montana.gsoc.msusel.quamoco.processor.MetricsContext;
-import edu.montana.gsoc.msusel.quamoco.verifier.config.VerifierConfiguration;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
@@ -123,7 +124,7 @@ public class ModelVerifier {
         MetricsContext.getInstance().merge(tree);
 
         LOG.info("Building Graph");
-        DirectedSparseGraph<Node, Edge> graph = null;
+        MutableNetwork<Node, Edge> graph = null;
         if (qualityModel != null)
             graph = buildGraph(Paths.get(qualityModel));
         else if (config.qmFiles().length > 0)
@@ -190,7 +191,7 @@ public class ModelVerifier {
 
         for (int i = 0; i < config.numExecutions(); i++)
         {
-            DirectedSparseGraph<Node, Edge> graph = null;
+            MutableNetwork<Node, Edge> graph = null;
             if (qualityModel != null)
                 graph = buildGraph(Paths.get(qualityModel));
             else
@@ -221,7 +222,7 @@ public class ModelVerifier {
      *            Distilled graph of the quality model
      */
     @VisibleForTesting
-    void validateModel(VerifierConfiguration config, DirectedSparseGraph<Node, Edge> graph)
+    void validateModel(VerifierConfiguration config, MutableNetwork<Node, Edge> graph)
     {
         BigDecimal[] observed = evaluateModel(config, graph);
         BigDecimal[] expected = new BigDecimal[observed.length];
@@ -268,7 +269,7 @@ public class ModelVerifier {
      * @return array of values for the selected quality aspects
      */
     @VisibleForTesting
-    BigDecimal[] evaluateModel(VerifierConfiguration config, DirectedSparseGraph<Node, Edge> graph)
+    BigDecimal[] evaluateModel(VerifierConfiguration config, MutableNetwork<Node, Edge> graph)
     {
         BigDecimal[] values = new BigDecimal[config.qualityAspects().size()];
 
@@ -276,7 +277,7 @@ public class ModelVerifier {
         {
             String aspect = config.qualityAspects().get(i);
             FactorNode factor = null;
-            for (final Node n : graph.getVertices())
+            for (final Node n : graph.nodes())
             {
                 if (n != null && n instanceof FactorNode && n.getName().equalsIgnoreCase(aspect))
                 {
@@ -299,11 +300,11 @@ public class ModelVerifier {
      * @return Distilled graph of the quality model
      */
     @VisibleForTesting
-    DirectedSparseGraph<Node, Edge> buildGraph(Path path)
+    MutableNetwork<Node, Edge> buildGraph(Path path)
     {
         final ModelDistiller distiller = new ModelDistiller();
         distiller.buildGraph(path);
-        final DirectedSparseGraph<Node, Edge> graph = distiller.getGraph();
+        final MutableNetwork<Node, Edge> graph = distiller.getGraph();
         return graph;
     }
 
@@ -317,12 +318,12 @@ public class ModelVerifier {
      *         language.
      */
     @VisibleForTesting
-    DirectedSparseGraph<Node, Edge> buildGraph(String lang)
+    MutableNetwork<Node, Edge> buildGraph(String lang)
     {
         final ModelDistiller distiller = new ModelDistiller();
         distiller.setLanguage(lang);
         distiller.buildGraph();
-        final DirectedSparseGraph<Node, Edge> graph = distiller.getGraph();
+        final MutableNetwork<Node, Edge> graph = distiller.getGraph();
         return graph;
     }
 
@@ -335,11 +336,11 @@ public class ModelVerifier {
      * @return Distilled graph of the quality models
      */
     @VisibleForTesting
-    DirectedSparseGraph<Node, Edge> buildGraph(String[] qmFiles)
+    MutableNetwork<Node, Edge> buildGraph(String[] qmFiles)
     {
         final ModelDistiller distiller = new ModelDistiller();
         distiller.buildGraph(qmFiles);
-        final DirectedSparseGraph<Node, Edge> graph = distiller.getGraph();
+        final MutableNetwork<Node, Edge> graph = distiller.getGraph();
         return graph;
     }
 
@@ -358,10 +359,10 @@ public class ModelVerifier {
      *            Tree providing locations where Findings will be linked
      */
     @VisibleForTesting
-    void linkIssues(VerifierConfiguration config, DirectedSparseGraph<Node, Edge> graph, CodeTree tree)
+    void linkIssues(VerifierConfiguration config, MutableNetwork<Node, Edge> graph, CodeTree tree)
     {
         Map<String, FindingNode> linkLocs = Maps.newHashMap();
-        for (final Node n : graph.getVertices())
+        for (final Node n : graph.nodes())
         {
             if (n instanceof FindingNode)
             {

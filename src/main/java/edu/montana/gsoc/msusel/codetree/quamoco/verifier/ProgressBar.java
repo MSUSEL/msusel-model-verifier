@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package edu.montana.gsoc.msusel.quamoco.verifier;
+package edu.montana.gsoc.msusel.codetree.quamoco.verifier;
 
 /**
  * A Command Line Progress Bar which will continually update the same line

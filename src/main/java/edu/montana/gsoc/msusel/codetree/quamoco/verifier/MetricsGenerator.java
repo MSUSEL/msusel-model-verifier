@@ -23,14 +23,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package edu.montana.gsoc.msusel.quamoco.verifier;
+package edu.montana.gsoc.msusel.codetree.quamoco.verifier;
 
+import edu.montana.gsoc.msusel.codetree.node.FileNode;
+import edu.montana.gsoc.msusel.codetree.node.ProjectNode;
+import edu.montana.gsoc.msusel.codetree.node.TypeNode;
 import org.apache.commons.math3.distribution.TriangularDistribution;
 
-import edu.montana.gsoc.msusel.node.FileNode;
-import edu.montana.gsoc.msusel.node.MethodNode;
-import edu.montana.gsoc.msusel.node.ProjectNode;
-import edu.montana.gsoc.msusel.node.TypeNode;
+import edu.montana.gsoc.msusel.codetree.node.MethodNode;
 
 /**
  * Class used to generate the necessary metrics in the generated code tree in
@@ -42,39 +42,39 @@ import edu.montana.gsoc.msusel.node.TypeNode;
 public class MetricsGenerator {
 
     /**
-     * Constant for MAXNESTING metric name
+     * Constant for MAXNESTING name name
      */
     public static final String MAXNESTING = "MaxNesting";
     /**
-     * Constant for the NOP metric name
+     * Constant for the NOP name name
      */
     public static final String NOP        = "NOF";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  // NumFields
     /**
-     * Constant for the NOV metric name
+     * Constant for the NOV name name
      */
     public static final String NOV        = "NOV";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      // NumClassFields
     /**
-     * Constant for the NOF metric name
+     * Constant for the NOF name name
      */
     public static final String NOF        = "NOF";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  // NumVariables/NumFields
     /**
-     * Constant for the NOS metric name
+     * Constant for the NOS name name
      */
     public static final String NOS        = "NOS";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  // NumStatements
     /**
-     * Constant for the NC metric name
+     * Constant for the NC name name
      */
     public static final String NC         = "NC";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             // NumClasses
     /**
-     * Constant for the LOC metric name
+     * Constant for the LOC name name
      */
     public static final String LOC        = "LOC";
     /**
-     * Constant for the RCC metric name
+     * Constant for the RCC name name
      */
     public static final String RCC        = "RCC";
     /**
-     * Constant for the NOM metric name
+     * Constant for the NOM name name
      */
     public static final String NOM        = "NOM";
 
@@ -107,7 +107,7 @@ public class MetricsGenerator {
                 projNOF += sub.getMetric(NOF);
                 projNOV += sub.getMetric(NOV);
                 projNC += sub.getMetric(NC);
-                // projMN = Math.max(sub.getMetric(MAXNESTING), projMN);
+                // projMN = Math.max(sub.getName(MAXNESTING), projMN);
             }
         }
 

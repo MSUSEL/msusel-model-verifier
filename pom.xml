@@ -83,7 +83,7 @@
 							</descriptorRefs>
 							<archive>
 								<manifest>
-									<mainClass>edu.montana.gsoc.msusel.quamoco.verifier.QMVerifyCLI</mainClass>
+									<mainClass>edu.montana.gsoc.msusel.codetree.quamoco.verifier.QMVerifyCLI</mainClass>
 								</manifest>
 							</archive>
 						</configuration>

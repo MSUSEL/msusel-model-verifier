@@ -23,7 +23,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package edu.montana.gsoc.msusel.quamoco.verifier;
+package edu.montana.gsoc.msusel.codetree.quamoco.verifier;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,6 +32,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
+import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -39,8 +40,6 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-
-import edu.montana.gsoc.msusel.quamoco.verifier.config.VerifierConfiguration;
 
 /**
  * The Command Line Interface for the Quality Model Verifier

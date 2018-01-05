@@ -46,9 +46,9 @@ This project depends on the following other MSUSEL subprojects:
  - If any of the following issues are found the affected factor will be identified and displayed
 
 ### Command Line Arguments:
-* `q -quality-model <FILE>` Selects the quality model to verify (assumes that any quality models it relies upon can be found in the same directory)
-* `o -output <FILE>` Specifies a file in which to save the output
-* `c -config <FILE>` Specifies the configuration file, default is verifier.json
+* `-q --quality-model <FILE>` Selects the quality model to verify (assumes that any quality models it relies upon can be found in the same directory)
+* `-o --output <FILE>` Specifies a file in which to save the output
+* `-c --config <FILE>` Specifies the configuration file, default is verifier.json
 * `D[paramname]` Specifies an overriding value for a given configuration value
 
 ## Output
@@ -137,6 +137,17 @@ There are two options:
       ```bash
         $ .\mvnw.cmd clean deploy -Dmaven.test.skip=true
       ```
+
+## Running
+After packing into a jar with dependencies as described in the *Building* section, run: 
+```bash
+  $ java -jar msusel-model-verifier-1.1.1-jar-with-dependencies.jar -q <path-to-.qm-file> -o <path-to-.txt-file> -c <path-to-config-.json-file>
+```
+from the directory containing the .jar file.
+- Example (using Windows command prompt):
+```bash
+  $ java -jar msusel-model-verifier-1.1.1-jar-with-dependencies.jar -q ..\examples\example.qm -o ..\examples\example-output.txt -c ..\examples\java-config.json
+```
 
 ## License
 As will all projects from MSUSEL this project is licensed under the MIT open source lincense. All source files associated with this project should have a copy of the license at the top of the file.

@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Quality Aspect                      Value      1 - Value     Zero? 
+-------------------------------------------------------------------
+              Quality @Product    1.0000000      0.00000     true
+                      Security    1.0000000      0.00000     true
+               Confidentiality    1.0000000      0.00000     true
+                     Integrity    1.0000000      0.00000     true
+-------------------------------------------------------------------
+----------------------------------------------------------------------------
+Quality Aspect                     Mean       StdDev      p-val    p < 0.025
+----------------------------------------------------------------------------
+              Quality @Product    0.46425    0.25096    0.00000     true
+                      Security    0.46425    0.25096    0.00000     true
+               Confidentiality    0.52868    0.39197    0.00000     true
+                     Integrity    0.39983    0.31338    0.00000     true
+----------------------------------------------------------------------------
+
+
+ Authorize Actors    0.38893    0.32561    0.00000     true
+----------------------------------------------------------------------------
+
+
+Installability    1.0000000      0.00000     true
+                     Integrity    1.0000000      0.00000     true
+              Interoperability    1.0000000      0.00000     true
+                  Learnability         0E-7      1.00000     false
+               Maintainability    1.0000000      0.00000     true
+                      Maturity    1.0000000      0.00000     true
+                 Modifiability    1.0000000      0.00000     true
+                    Modularity    1.0000000      0.00000     true
+               Non-Repudiation    1.0000000      0.00000     true
+                   Operability    1.0000000      0.00000     true
+        Performance Efficiency    1.0000000      0.00000     true
+                   Portability    1.0000000      0.00000     true
+                Recoverability    1.0000000      0.00000     true
+                   Reliability    1.0000000      0.00000     true
+                Replaceability    1.0000000      0.00000     true
+          Resource Utilization    1.0000000      0.00000     true
+                   Reusability    1.0000000      0.00000     true
+                      Security    1.0000000      0.00000     true
+                   Testability    1.0000000      0.00000     true
+                 Time Behavior    1.0000000      0.00000     true
+                     Usability    1.0000000      0.00000     true
+         User Error Protection         0E-7      1.00000     false
+     User Interface Aesthetics         0E-7      1.00000     false
+-------------------------------------------------------------------
+----------------------------------------------------------------------------
+Quality Aspect                     Mean       StdDev      p-val    p < 0.025
+----------------------------------------------------------------------------
+              Quality @Product    0.97279    0.01561    0.00000     true
+                 Accessibility    0.91991    0.18679    0.00004     true
+                Accountability    0.86877    0.15989    0.00000     true
+                  Adaptability    1.00000    0.00000    0.00000     true
+                 Analyzability    0.97388    0.01138    0.00000     true
+Appropriateness Recognisabilit    0.00000    0.00000    0.00000     true
+                  Authenticity    0.94413    0.04739    0.00000     true
+                  Availability    1.00000    0.00000    NaN     false
+                  Co-existence    0.00000    0.00000    0.00000     true
+                 Compatibility    0.99210    0.01401    0.00000     true
+               Confidentiality    0.96055    0.02854    0.00000     true
+               Fault Tolerance    0.95964    0.04491    0.00000     true
+    Functional Appropriateness    0.99472    0.01348    0.00016     true
+       Functional Completeness    0.93839    0.05881    0.00000     true
+        Functional Correctness    0.96917    0.01732    0.00000     true
+        Functional Suitability    0.96743    0.02084    0.00000     true
+                Installability    1.00000    0.00000    NaN     false
+                     Integrity    0.94409    0.04686    0.00000     true
+              Interoperability    0.99210    0.01401    0.00000     true
+                  Learnability    0.00000    0.00000    0.00000     true
+               Maintainability    0.98081    0.00793    0.00000     true
+                      Maturity    0.97266    0.02926    0.00000     true
+                 Modifiability    0.97086    0.02038    0.00000     true
+                    Modularity    0.98702    0.02400    0.00000     true
+               Non-Repudiation    0.96634    0.07847    0.00004     true
+                   Operability    0.98480    0.03745    0.00010     true
+        Performance Efficiency    0.94053    0.03640    0.00000     true
+                   Portability    1.00000    0.00000    NaN     false
+                Recoverability    0.98844    0.02780    0.00007     true
+                   Reliability    0.98295    0.01483    0.00000     true
+                Replaceability    1.00000    0.00000    NaN     false
+          Resource Utilization    0.94504    0.03413    0.00000     true
+                   Reusability    0.98226    0.01388    0.00000     true
+                      Security    0.96610    0.02906    0.00000     true
+                   Testability    0.98352    0.00950    0.00000     true
+                 Time Behavior    0.93603    0.04547    0.00000     true
+                     Usability    0.95235    0.09504    0.00000     true
+         User Error Protection    0.00000    0.00000    0.00000     true
+     User Interface Aesthetics    0.00000    0.00000    0.00000     true
+----------------------------------------------------------------------------
+
+
+-------------------------------
+
+

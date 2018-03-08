@@ -59,7 +59,7 @@ import edu.montana.gsoc.msusel.quamoco.graph.node.FactorNode;
 import edu.montana.gsoc.msusel.quamoco.graph.node.Finding;
 import edu.montana.gsoc.msusel.quamoco.graph.node.FindingNode;
 import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
-import edu.montana.gsoc.msusel.quamoco.processor.Extent;
+import edu.montana.gsoc.msusel.quamoco.processor.extents.Extent;
 import edu.montana.gsoc.msusel.quamoco.processor.MetricsContext;
 import edu.uci.ics.jung.graph.DirectedSparseGraph;
 

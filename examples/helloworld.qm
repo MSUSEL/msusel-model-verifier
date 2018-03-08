@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qm:QualityModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:qm="http://www.quamoco.de/qm/v17" xmi:id="_evpB8PIxEeeEz_ZYwymmuw" description="Simple example of a security focused quality model designed to utilize CWEs, CWRAF/CWSS scoring, and architecture-focused quality analysis." name="HelloWorld">
+  <factors xmi:id="_m30qAPIxEeeEz_ZYwymmuw" description="CWE-1011 description" name="CWE-1011 Authorize Actors">
+    <influences xmi:id="_Cz0WoPI5EeeEz_ZYwymmuw" effect="NEGATIVE">
+      <target href="root.qm#_hCU1s-P0Ed6mXujsf-O9qQ"/>
+    </influences>
+  </factors>
+  <factors xmi:id="_0W4WgPI5EeeEz_ZYwymmuw" description="CWE-114 factor description" name="CWE-114 Process Control">
+    <characterizes href="object.qm#_zDY80LpUEd-vsOyJ3PcLww"/>
+    <refines xmi:id="_0W9PAPI5EeeEz_ZYwymmuw" parent="_m30qAPIxEeeEz_ZYwymmuw"/>
+  </factors>
+  <factors xmi:id="_WSI7EPI6EeeEz_ZYwymmuw" description="Description for CWE-1020 factor" name="CWE-1020 Verify Message Integrity">
+    <influences xmi:id="_WSLXUPI6EeeEz_ZYwymmuw" effect="NEGATIVE">
+      <target href="root.qm#_hCU1teP0Ed6mXujsf-O9qQ"/>
+    </influences>
+  </factors>
+  <factors xmi:id="_ikwjQPI6EeeEz_ZYwymmuw" description="Description for CWE-391 factor" name="CWE-391 Unchecked Error Condition">
+    <characterizes href="object.qm#_zDY80LpUEd-vsOyJ3PcLww"/>
+    <refines xmi:id="_ikxKUPI6EeeEz_ZYwymmuw" parent="_WSI7EPI6EeeEz_ZYwymmuw"/>
+  </factors>
+  <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_HCRUEPI5EeeEz_ZYwymmuw" name="WeightedSumFactorAggregation">
+    <evaluates href="root.qm#_Q1b28KUlEd-NpKpUUyVKCQ"/>
+    <rankings xmi:id="_PXpDkPI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_hCU1xOP0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_PXpDkfI5EeeEz_ZYwymmuw" rank="1" weight="1.0">
+      <factor href="root.qm#_hCU1suP0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_PXpDkvI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_hCU1vuP0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_PXpDk_I5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_hCU1kOP0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_PXpDlPI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_hCU1oOP0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_PXpDlfI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_hCU10OP0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_PXpDlvI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_hCU1luP0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_PXpDl_I5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_hCU1puP0Ed6mXujsf-O9qQ"/>
+    </rankings>
+  </evaluations>
+  <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_UDXL0PI5EeeEz_ZYwymmuw" name="WeightedSumFactorAggregation">
+    <evaluates href="root.qm#_hCU1suP0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_edfBUPI5EeeEz_ZYwymmuw" rank="1" weight="0.5">
+      <factor href="root.qm#_hCU1s-P0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBUfI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_hCU1ueP0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBUvI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_hCU1u-P0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBU_I5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_9JlVYoXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBVPI5EeeEz_ZYwymmuw">
+      <factor href="object.qm#_9Mam8IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBVfI5EeeEz_ZYwymmuw">
+      <factor href="object.qm#_9NwDsIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBVvI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_9N50soXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBV_I5EeeEz_ZYwymmuw">
+      <factor href="object.qm#_9O8WgIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBWPI5EeeEz_ZYwymmuw">
+      <factor href="object.qm#_9nrmoIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBWfI5EeeEz_ZYwymmuw">
+      <factor href="object.qm#_9PZCcIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBWvI5EeeEz_ZYwymmuw">
+      <factor href="object.qm#_9PizcIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBW_I5EeeEz_ZYwymmuw">
+      <factor href="object.qm#_9RCBMIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBXPI5EeeEz_ZYwymmuw">
+      <factor href="object.qm#_9RetIIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBXfI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_9S0J5IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBXvI5EeeEz_ZYwymmuw" rank="1" weight="0.5">
+      <factor href="root.qm#_hCU1teP0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBX_I5EeeEz_ZYwymmuw">
+      <factor href="object.qm#_9TkX0oXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBYPI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_9Mjw4IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBYfI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_hCU1t-P0Ed6mXujsf-O9qQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBYvI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_9fes4oXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBY_I5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_9fyO4IXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBZPI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_9pdvUIXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_edfBZfI5EeeEz_ZYwymmuw">
+      <factor href="root.qm#_9tCnwYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+  </evaluations>
+  <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_uPDcoPI5EeeEz_ZYwymmuw" name="WeightedSumFactorAggregation">
+    <evaluates href="root.qm#_hCU1s-P0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_yJEbIPI5EeeEz_ZYwymmuw" rank="1" weight="1.0" factor="_m30qAPIxEeeEz_ZYwymmuw"/>
+  </evaluations>
+  <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_RCQ84PI6EeeEz_ZYwymmuw" name="WeightedSumFactorAggregation">
+    <evaluates href="root.qm#_hCU1teP0Ed6mXujsf-O9qQ"/>
+    <rankings xmi:id="_Q8J4YPI7EeeEz_ZYwymmuw">
+      <factor href="root.qm#_9nO6sYXWEeCT8pJoQsn4HQ"/>
+    </rankings>
+    <rankings xmi:id="_Q8J4YfI7EeeEz_ZYwymmuw" rank="1" weight="1.0" factor="_WSI7EPI6EeeEz_ZYwymmuw"/>
+  </evaluations>
+  <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_d_4C0PI6EeeEz_ZYwymmuw" name="WeightedSumFactorAggregation" evaluates="_WSI7EPI6EeeEz_ZYwymmuw">
+    <rankings xmi:id="_N-1LoPI7EeeEz_ZYwymmuw" rank="1" weight="1.0" factor="_ikwjQPI6EeeEz_ZYwymmuw"/>
+  </evaluations>
+  <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_l6qvIPI6EeeEz_ZYwymmuw" name="WeightedSumMultiMeasureEvaluation" evaluates="_ikwjQPI6EeeEz_ZYwymmuw">
+    <rankings xmi:id="_4dL5MPJoEee_vNpVqjnzhQ" measure="_nyiPsPI6EeeEz_ZYwymmuw" range="NA" rank="1" weight="0.5">
+      <normlizationMeasure href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
+      <function xsi:type="qm:LinearIncreasingFunction" xmi:id="_4dL5MfJoEee_vNpVqjnzhQ" upperBound="1.0"/>
+    </rankings>
+    <rankings xmi:id="_4dL5MvJoEee_vNpVqjnzhQ" measure="_k9e_QPJoEee_vNpVqjnzhQ" range="NA" rank="1" weight="0.5">
+      <normlizationMeasure href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
+      <function xsi:type="qm:LinearIncreasingFunction" xmi:id="_4dL5M_JoEee_vNpVqjnzhQ" upperBound="1.0"/>
+    </rankings>
+  </evaluations>
+  <evaluations xsi:type="qm:WeightedSumFactorAggregation" xmi:id="_qnEXYPI7EeeEz_ZYwymmuw" name="WeightedSumFactorAggregation" evaluates="_m30qAPIxEeeEz_ZYwymmuw">
+    <rankings xmi:id="_rPKSIPI7EeeEz_ZYwymmuw" rank="1" weight="1.0" factor="_0W4WgPI5EeeEz_ZYwymmuw"/>
+  </evaluations>
+  <evaluations xsi:type="qm:WeightedSumMultiMeasureEvaluation" xmi:id="_VpiGUPJjEee_vNpVqjnzhQ" name="WeightedSumMultiMeasureEvaluation" evaluates="_0W4WgPI5EeeEz_ZYwymmuw">
+    <rankings xmi:id="_YIZ8gPJjEee_vNpVqjnzhQ" measure="_6f_p0PI5EeeEz_ZYwymmuw" range="NA" rank="1" weight="1.0">
+      <normlizationMeasure href="root.qm#_6wmhsOHIEd-_QLJMFBuPpg"/>
+      <function xsi:type="qm:LinearIncreasingFunction" xmi:id="_YIZ8gfJjEee_vNpVqjnzhQ" upperBound="1.0"/>
+    </rankings>
+  </evaluations>
+  <measures xmi:id="_6f_p0PI5EeeEz_ZYwymmuw" description="Description for APTCA measure." name="APTCA Methods not Calling APTCA Methods" type="FINDINGS">
+    <measures xmi:id="_6gCtIPI5EeeEz_ZYwymmuw" parent="_0W4WgPI5EeeEz_ZYwymmuw"/>
+  </measures>
+  <measures xmi:id="_nyiPsPI6EeeEz_ZYwymmuw" description="Description for method override measure" name="Method Override Without Consistent Transparency" type="FINDINGS">
+    <measures xmi:id="_nykr8PI6EeeEz_ZYwymmuw" parent="_ikwjQPI6EeeEz_ZYwymmuw"/>
+  </measures>
+  <measures xmi:id="_k9e_QPJoEee_vNpVqjnzhQ" description="Description for suppress unmanaged code measure." name="Suppress Unmanaged Code Security" type="FINDINGS">
+    <measures xmi:id="_k9lF4PJoEee_vNpVqjnzhQ" parent="_ikwjQPI6EeeEz_ZYwymmuw"/>
+  </measures>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_90uxAPI5EeeEz_ZYwymmuw" determines="_6f_p0PI5EeeEz_ZYwymmuw" tool="_i3kGgPJmEee_vNpVqjnzhQ" metric="fxcop:AptcaMethodsShouldOnlyCallAptcaMethods"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_1pVncPI6EeeEz_ZYwymmuw" determines="_nyiPsPI6EeeEz_ZYwymmuw" tool="_i3kGgPJmEee_vNpVqjnzhQ" metric="fxcop:MethodsMustOverrideWithConsistentTransparency"/>
+  <measurementMethods xsi:type="qm:ToolBasedInstrument" xmi:id="_veanYPJoEee_vNpVqjnzhQ" determines="_k9e_QPJoEee_vNpVqjnzhQ" tool="_i3kGgPJmEee_vNpVqjnzhQ" metric="fxcop:ReviewSuppressUnmanagedCodeSecurityUsage"/>
+  <tools xmi:id="_i3kGgPJmEee_vNpVqjnzhQ" description="Description for fxcop&#x9;" name="fxcop"/>
+  <requires href="object.qm#_vVIPYKUsEd-NpKpUUyVKCQ"/>
+  <requires href="root.qm#_JarMoOHNEd-I9oS2OyT8ug"/>
+</qm:QualityModel>

@@ -1,8 +1,8 @@
 /**
  * The MIT License (MIT)
  *
- * MSUSEL Quamoco Verifier
- * Copyright (c) 2015-2017 Montana State University, Gianforte School of Computing,
+ * MSUSEL Quamoco Model Verifier
+ * Copyright (c) 2015-2018 Montana State University, Gianforte School of Computing,
  * Software Engineering Laboratory
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,6 +25,9 @@
  */
 package edu.montana.gsoc.msusel.codetree.quamoco.verifier;
 
+import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
+import org.apache.commons.cli.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -32,20 +35,11 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
-import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-
 /**
  * The Command Line Interface for the Quality Model Verifier
  * 
  * @author Isaac Griffith
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class QMVerifyCLI {
 

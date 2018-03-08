@@ -1,8 +1,8 @@
 /**
  * The MIT License (MIT)
  *
- * MSUSEL Quamoco Verifier
- * Copyright (c) 2015-2017 Montana State University, Gianforte School of Computing,
+ * MSUSEL Quamoco Model Verifier
+ * Copyright (c) 2015-2018 Montana State University, Gianforte School of Computing,
  * Software Engineering Laboratory
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,21 +25,17 @@
  */
 package edu.montana.gsoc.msusel.codetree.quamoco.verifier.config;
 
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+
 import java.lang.reflect.Type;
 import java.util.List;
-
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.reflect.TypeToken;
 
 /**
  * JSON Deserializer for Verifier Configurations
  * 
  * @author Isaac Griffith
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class VerifierConfigurationDeserializer implements JsonDeserializer<VerifierConfiguration> {
 

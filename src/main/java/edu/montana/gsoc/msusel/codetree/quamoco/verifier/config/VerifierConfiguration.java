@@ -1,8 +1,8 @@
 /**
  * The MIT License (MIT)
  *
- * MSUSEL Quamoco Verifier
- * Copyright (c) 2015-2017 Montana State University, Gianforte School of Computing,
+ * MSUSEL Quamoco Model Verifier
+ * Copyright (c) 2015-2018 Montana State University, Gianforte School of Computing,
  * Software Engineering Laboratory
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -44,7 +44,7 @@ import com.google.gson.annotations.Expose;
  * Class used to hold the data necessary for configuring a model verifier.
  * 
  * @author Isaac Griffith
- * @version 1.1.1
+ * @version 1.2.0
  */
 public class VerifierConfiguration {
 

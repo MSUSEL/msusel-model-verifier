@@ -25,6 +25,31 @@
  */
 package edu.montana.gsoc.msusel.codetree.quamoco.verifier;
 
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.graph.MutableNetwork;
+import edu.montana.gsoc.msusel.codetree.CodeTree;
+import edu.montana.gsoc.msusel.codetree.node.AbstractNode;
+import edu.montana.gsoc.msusel.codetree.node.member.MethodNode;
+import edu.montana.gsoc.msusel.codetree.node.structural.FileNode;
+import edu.montana.gsoc.msusel.codetree.node.type.TypeNode;
+import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
+import edu.montana.gsoc.msusel.metrics.MeasuresTable;
+import edu.montana.gsoc.msusel.quamoco.distiller.ModelDistiller;
+import edu.montana.gsoc.msusel.quamoco.distiller.ModelManager;
+import edu.montana.gsoc.msusel.quamoco.graph.edge.Edge;
+import edu.montana.gsoc.msusel.quamoco.graph.node.FactorNode;
+import edu.montana.gsoc.msusel.quamoco.graph.node.Finding;
+import edu.montana.gsoc.msusel.quamoco.graph.node.FindingNode;
+import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
+import edu.montana.gsoc.msusel.quamoco.processor.extents.Extent;
+import org.apache.commons.math3.stat.StatUtils;
+import org.apache.commons.math3.stat.inference.TestUtils;
+import org.apache.commons.math3.util.FastMath;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -34,34 +59,6 @@ import java.security.SecureRandom;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
-import com.google.common.graph.MutableNetwork;
-import edu.montana.gsoc.msusel.codetree.CodeTree;
-import edu.montana.gsoc.msusel.codetree.INode;
-import edu.montana.gsoc.msusel.codetree.metrics.Register;
-import edu.montana.gsoc.msusel.codetree.node.FileNode;
-import edu.montana.gsoc.msusel.codetree.node.MethodNode;
-import edu.montana.gsoc.msusel.codetree.node.TypeNode;
-import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
-import org.apache.commons.math3.stat.StatUtils;
-import org.apache.commons.math3.stat.inference.TestUtils;
-import org.apache.commons.math3.util.FastMath;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-
-import edu.montana.gsoc.msusel.quamoco.distiller.ModelDistiller;
-import edu.montana.gsoc.msusel.quamoco.graph.edge.Edge;
-import edu.montana.gsoc.msusel.quamoco.graph.node.FactorNode;
-import edu.montana.gsoc.msusel.quamoco.graph.node.Finding;
-import edu.montana.gsoc.msusel.quamoco.graph.node.FindingNode;
-import edu.montana.gsoc.msusel.quamoco.graph.node.Node;
-import edu.montana.gsoc.msusel.quamoco.processor.extents.Extent;
-import edu.montana.gsoc.msusel.quamoco.processor.MetricsContext;
-import edu.uci.ics.jung.graph.DirectedSparseGraph;
 
 /**
  * Class controlling the simulation process for quality model verification.
@@ -79,6 +76,10 @@ public class ModelVerifier {
      * IO Writer for results
      */
     private PrintWriter         outputter;
+    /**
+     *
+     */
+    private ModelManager manager;
 
     /**
      * Constructs a new ModelVerifier associated with the given Writer
@@ -88,6 +89,7 @@ public class ModelVerifier {
      */
     public ModelVerifier(PrintWriter outputter)
     {
+        this.manager = new ModelManager();
         this.outputter = outputter;
     }
 
@@ -103,9 +105,8 @@ public class ModelVerifier {
      */
     public void process(VerifierConfiguration config, String qualityModel, String output)
     {
-        Register.register();
         Extent.getInstance().clearExtents();
-        MetricsContext.getCleanInstance();
+        MeasuresTable table = MeasuresTable.getInstance();
 
         ProjectGenerator generator = null;
         if (config.multiProject())
@@ -121,7 +122,7 @@ public class ModelVerifier {
         metgen.addMetricsToCodeTree(tree.getProject());
 
         LOG.info("Merging CodeTree into MetricsContext");
-        MetricsContext.getInstance().merge(tree);
+        table.merge(tree);
 
         LOG.info("Building Graph");
         MutableNetwork<Node, Edge> graph = null;
@@ -302,7 +303,7 @@ public class ModelVerifier {
     @VisibleForTesting
     MutableNetwork<Node, Edge> buildGraph(Path path)
     {
-        final ModelDistiller distiller = new ModelDistiller();
+        final ModelDistiller distiller = new ModelDistiller(manager);
         distiller.buildGraph(path);
         final MutableNetwork<Node, Edge> graph = distiller.getGraph();
         return graph;
@@ -320,7 +321,7 @@ public class ModelVerifier {
     @VisibleForTesting
     MutableNetwork<Node, Edge> buildGraph(String lang)
     {
-        final ModelDistiller distiller = new ModelDistiller();
+        final ModelDistiller distiller = new ModelDistiller(manager);
         distiller.setLanguage(lang);
         distiller.buildGraph();
         final MutableNetwork<Node, Edge> graph = distiller.getGraph();
@@ -338,7 +339,7 @@ public class ModelVerifier {
     @VisibleForTesting
     MutableNetwork<Node, Edge> buildGraph(String[] qmFiles)
     {
-        final ModelDistiller distiller = new ModelDistiller();
+        final ModelDistiller distiller = new ModelDistiller(manager);
         distiller.buildGraph(qmFiles);
         final MutableNetwork<Node, Edge> graph = distiller.getGraph();
         return graph;
@@ -395,7 +396,7 @@ public class ModelVerifier {
                         List<TypeNode> types = Lists.newArrayList(tree.getUtils().getTypes());
                         List<FileNode> files = Lists.newArrayList(tree.getUtils().getFiles());
 
-                        INode location = null;
+                        AbstractNode location = null;
 
                         int type = rand.nextInt(3);
                         switch (type)

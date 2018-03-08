@@ -25,6 +25,13 @@
  */
 package edu.montana.gsoc.msusel.codetree.quamoco.verifier;
 
+import com.google.common.collect.Lists;
+import edu.montana.gsoc.msusel.codetree.CodeTree;
+import edu.montana.gsoc.msusel.codetree.node.structural.FileNode;
+import edu.montana.gsoc.msusel.codetree.node.type.TypeNode;
+import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
+import org.apache.commons.math3.distribution.TriangularDistribution;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -33,14 +40,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-
-import edu.montana.gsoc.msusel.codetree.node.FileNode;
-import edu.montana.gsoc.msusel.codetree.CodeTree;
-import edu.montana.gsoc.msusel.codetree.node.TypeNode;
-import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
-import org.apache.commons.math3.distribution.TriangularDistribution;
-
-import com.google.common.collect.Lists;
 
 /**
  * Base class for ProjectGenerators used to construct a codetree for simulation
@@ -236,9 +235,9 @@ public abstract class ProjectGenerator {
      */
     protected String generateRandomTypeName(FileNode file)
     {
-        if (file.getTypes().isEmpty())
+        if (((List<TypeNode>)file.types()).isEmpty())
         {
-            String name = file.getName().substring(file.getName().lastIndexOf('/') + 1);
+            String name = file.name().toString().substring(file.name().toString().lastIndexOf('/') + 1);
             return name.split("\\.")[0];
         }
 
@@ -361,7 +360,7 @@ public abstract class ProjectGenerator {
      */
     protected String createFieldIdentifier(TypeNode type, String name)
     {
-        return type.getQIdentifier() + "#" + name;
+        return type.getKey() + "#" + name;
     }
 
     /**
@@ -433,6 +432,6 @@ public abstract class ProjectGenerator {
      */
     protected String createMethodIdentifier(TypeNode type, String name)
     {
-        return type.getQIdentifier() + "#" + name;
+        return type.getKey() + "#" + name;
     }
 }

@@ -25,16 +25,19 @@
  */
 package edu.montana.gsoc.msusel.codetree.quamoco.verifier;
 
-import java.security.SecureRandom;
-import java.util.List;
-
 import edu.montana.gsoc.msusel.codetree.CodeTree;
-import edu.montana.gsoc.msusel.codetree.node.FieldNode;
-import edu.montana.gsoc.msusel.codetree.node.FileNode;
-import edu.montana.gsoc.msusel.codetree.node.MethodNode;
-import edu.montana.gsoc.msusel.codetree.node.TypeNode;
+import edu.montana.gsoc.msusel.codetree.node.member.ConstructorNode;
+import edu.montana.gsoc.msusel.codetree.node.member.FieldNode;
+import edu.montana.gsoc.msusel.codetree.node.member.MethodNode;
+import edu.montana.gsoc.msusel.codetree.node.structural.FileNode;
+import edu.montana.gsoc.msusel.codetree.node.structural.ProjectNode;
+import edu.montana.gsoc.msusel.codetree.node.type.ClassNode;
+import edu.montana.gsoc.msusel.codetree.node.type.TypeNode;
 import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
 import org.apache.commons.math3.distribution.TriangularDistribution;
+
+import java.security.SecureRandom;
+import java.util.List;
 
 /**
  * Class used to generate the code tree for a simple single project project.
@@ -63,7 +66,7 @@ public class SimpleProjectGenerator extends ProjectGenerator {
     public CodeTree generateCodeTree()
     {
         CodeTree ctree = new CodeTree();
-        ctree.setProject("Project:Test");
+        ctree.setProject(ProjectNode.builder().key("Project:Test").create());
         List<String> pkgs = generateNamespaceList();
         for (String pkg : pkgs)
         {
@@ -84,7 +87,7 @@ public class SimpleProjectGenerator extends ProjectGenerator {
                 TriangularDistribution sizeDist = new TriangularDistribution(300, 700, 3000);
                 final int length = (int) sizeDist.sample();
 
-                FileNode file = FileNode.builder(fullPath).length(length).create();
+                FileNode file = FileNode.builder().key(fullPath).create();
                 // file.setStart(1);
 
                 int lastEnd = 1;
@@ -103,7 +106,7 @@ public class SimpleProjectGenerator extends ProjectGenerator {
                     if (start == end)
                         break;
 
-                    TypeNode clazz = TypeNode.builder().identifier(qIdentifier).name(identifier).start(start).end(end).create();
+                    TypeNode clazz = ClassNode.builder().key(qIdentifier).start(start).end(end).create();
 
                     TriangularDistribution nfDist = new TriangularDistribution(
                             1, config.maxFieldsPerType() / 2 + 1, config.maxFieldsPerType());
@@ -115,8 +118,8 @@ public class SimpleProjectGenerator extends ProjectGenerator {
                         String qId = createFieldIdentifier(clazz, name);
                         int line = lastLine + 1;
 
-                        FieldNode fn = FieldNode.builder().name(name).identifier(qId).start(line).end(line).create();
-                        clazz.addField(fn);
+                        FieldNode fn = FieldNode.builder().key(qId).start(line).end(line).create();
+                        clazz.addChild(fn);
 
                         lastLine = line;
                     }
@@ -140,13 +143,17 @@ public class SimpleProjectGenerator extends ProjectGenerator {
                         lastLine = e;
                         String qId = createMethodIdentifier(clazz, name);
 
-                        MethodNode mn = MethodNode.builder().name(name).identifier(qId).constructor(constructor).start(s).end(e).create();
-                        clazz.addMethod(mn);
+                        MethodNode mn;
+                        if (constructor)
+                            mn = ConstructorNode.builder().key(qId).start(s).end(e).create();
+                        else
+                            mn = MethodNode.builder().key(qId).start(s).end(e).create();
+                        clazz.addChild(mn);
                     }
 
-                    file.addType(clazz);
+                    file.addChild(clazz);
                 }
-                ctree.getProject().addFile(file);
+                ctree.getProject().addChild(file);
             }
         }
 

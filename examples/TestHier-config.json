@@ -1,0 +1,27 @@
+{
+  "multiProject": false,
+  "maxSubProjectDepth": 2,
+  "maxProjectsPerPly": 2,
+  "maxFilesPerProject": 10,
+  "maxTypesPerFile": 3,
+  "maxMethodsPerType": 7,
+  "maxFieldsPerType": 3,
+  "maxFindingsPerItem": 3,
+  "findingProbability": 0.99,
+  "numExecutions": 100,
+  "maxFindingsActivatedForAny": 25,
+  "qmFiles": [
+    "TestHier.qm",
+    "Test.qm"
+  ],
+  "qualityAspects": [
+    "Quality @Product",
+    "Quality @Source Code Part",
+    "Maintainability",
+    "Security"
+  ],
+  "findingsToVerify": [
+    "ALL"
+  ],
+  "fileExtension": "cs"
+}

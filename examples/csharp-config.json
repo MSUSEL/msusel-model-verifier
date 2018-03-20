@@ -8,7 +8,7 @@
 	"maxFieldsPerType": 3,
 	"maxFindingsPerItem": 3,
 	"findingProbability": 0.15,
-	"numExecutions": 100,
+	"numExecutions": 2,
 	"maxFindingsActivatedForAny": 25,
 	"qmFiles": [
 		"csharp.qm",
@@ -55,6 +55,15 @@
 		"Usability",
 		"User Error Protection",
 		"User Interface Aesthetics"
+//		"Maintainability",
+//        "Analyzability",
+//        "Modifiability",
+//        "Modularity",
+//        "Reusability",
+//        "Testability",
+//        "Behavioral Integrity @Exception",
+//        "Conformity to Naming Convention @Source code identifier",
+//        "Maintainability Concern"
 	],
 	"findingsToVerify": [
 		"ALL"

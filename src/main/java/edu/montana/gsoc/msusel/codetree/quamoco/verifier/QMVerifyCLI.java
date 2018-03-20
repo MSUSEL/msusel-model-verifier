@@ -27,6 +27,7 @@ package edu.montana.gsoc.msusel.codetree.quamoco.verifier;
 
 import edu.montana.gsoc.msusel.codetree.quamoco.verifier.config.VerifierConfiguration;
 import org.apache.commons.cli.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -95,11 +96,23 @@ public class QMVerifyCLI {
                 .hasArg()
                 .numberOfArgs(1)
                 .build();
+        final Option noEval = Option.builder()
+                .required(false)
+                .longOpt("no-eval")
+                .desc("Prevent evaluation of the model")
+                .build();
+        final Option noValidEdges = Option.builder()
+                .required(false)
+                .longOpt("no-valid-edges")
+                .desc("Prevent detecting problematic edges")
+                .build();
         options = new Options();
         QMVerifyCLI.options.addOption(help);
         QMVerifyCLI.options.addOption(output);
         QMVerifyCLI.options.addOption(model);
         QMVerifyCLI.options.addOption(config);
+        QMVerifyCLI.options.addOption(noEval);
+        QMVerifyCLI.options.addOption(noValidEdges);
     }
 
     /**
@@ -140,6 +153,8 @@ public class QMVerifyCLI {
         else
         {
             output = DEFAULT_OUTPUT;
+            outputter = new PrintWriter(
+                    Files.newBufferedWriter(Paths.get(output), StandardOpenOption.CREATE, StandardOpenOption.WRITE));
         }
 
         if (line.hasOption('q'))
@@ -156,8 +171,19 @@ public class QMVerifyCLI {
             config = VerifierConfiguration.load(DEFAULT_CONFIG);
         }
 
+        boolean eval = true;
+        if (line.hasOption("no-eval"))
+        {
+            eval = false;
+        }
+
+        boolean edges = true;
+        if (line.hasOption("no-valid-edges")) {
+            edges = false;
+        }
+
         ModelVerifier verifier = new ModelVerifier(outputter);
-        verifier.process(config, qualityModel, output);
+        verifier.process(config, qualityModel, eval, edges);
 
         if (outputter != null)
         {
@@ -172,13 +198,21 @@ public class QMVerifyCLI {
      * @param args
      *            Raw command line arguments.
      */
-    public static void main(final String... args)
+    public static void main(@NotNull final String... args)
     {
         final CommandLineParser parser = new DefaultParser();
         try
         {
-            final CommandLine line = parser.parse(QMVerifyCLI.options, args);
-            execute(line);
+            if (args.length == 0)
+            {
+//                String[] other = {"-c", "msusel-model-verifier/examples/csharp-config.json", "-q", "msusel-model-verifier/examples/csharp.qm"};
+//                CommandLine line = parser.parse(QMVerifyCLI.options, other);
+//                execute(line);
+                printHelp();
+            } else {
+                CommandLine line = parser.parse(QMVerifyCLI.options, args);
+                execute(line);
+            }
         }
         catch (final ParseException exp)
         {
@@ -198,6 +232,6 @@ public class QMVerifyCLI {
         final HelpFormatter formatter = new HelpFormatter();
         formatter.printHelp(
                 "qmverify", "\nValidate and verify a quamoco quality model.\n\n", QMVerifyCLI.options,
-                "\nMontana State University, Gianforte School of Computing (C) 2015-2017", true);
+                "\nMontana State University, Gianforte School of Computing (C) 2015-2018", true);
     }
 }
